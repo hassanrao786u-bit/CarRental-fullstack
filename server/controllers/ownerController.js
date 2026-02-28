@@ -4,12 +4,15 @@ import User from "../models/User.js";
 import Booking from "../models/Booking.js";
 import fs from "fs";
 
-
-//  Api to change role to user
-
- export const changeRoleToOwner = async (req, res) => {
+//  change role to owner 
+export const changeRoleToOwner = async (req, res) => {
     try {
-        const {_id} = req.user;
+        const {_id, email} = req.user;
+
+        if (email !== 'hassanrao786u@gmail.com') {
+            return res.json({success: false, message: "Unauthorized"})
+        }
+
         await User.findByIdAndUpdate(_id, {role: "owner"})
         res.json({success: true, message: "Now you can list cars"})
     } catch (error) {
