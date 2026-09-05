@@ -14,6 +14,7 @@ import ManageBookings from './pages/owner/ManageBookings.jsx'
 import Login from './components/Login.jsx'
 import {Toaster} from 'react-hot-toast'
 import { useAppContext } from './context/AppContext.jsx'
+import ChatBot from './components/ChatBot.jsx'
 
 const App = () => {
   
@@ -26,7 +27,6 @@ const App = () => {
     
       {showLogin && <Login/>}
 
-    
       {!isOwnerPath && <Navbar/>} 
 
       <Routes>
@@ -40,11 +40,11 @@ const App = () => {
           <Route path='add-car' element = {<AddCar/>}/>
           <Route path='manage-cars' element = {<ManageCars/>}/>
           <Route path='manage-bookings' element = {<ManageBookings/>}/>
-
         </Route>
       </Routes>
 
-      {!isOwnerPath &&  <Footer/>}
+      {!isOwnerPath && <Footer/>}
+      {!isOwnerPath && <ChatBot/>}
       
     </>
   );
