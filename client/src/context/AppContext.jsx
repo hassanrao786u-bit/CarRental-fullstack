@@ -30,7 +30,7 @@ export const AppProvider = ({children}) => {
         try {
            const {data} = await axios.get('/api/user/data')
 
-        if (data.success)
+        if (data.success && data.user)
         {
             setUser(data.user)
             setIsOwner(data.user.role === 'owner')
